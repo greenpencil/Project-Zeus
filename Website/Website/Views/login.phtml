@@ -1,0 +1,47 @@
+<?php require('template/header.phtml') ?>
+<div class="container">
+    <div class="col-md-10 col-xs-12 col-centered">
+        <section>
+            <h2 class="text-center padding-10">Login</h2>
+            <?php
+            //Checks that POST isn't empty
+            if(!empty($_POST)) {
+                //Performs the Checks on the Login Form when submitted
+                $check = new Check();
+                $check->required($_POST['email'], "Email");
+                $check->required($_POST['password'], "Password");
+                //Checks the all the checks have been passed.
+                if($check->passed()) {
+                    $user = new User();
+                    $remember = (isset($_POST['rememberme'])) ? true : false;
+                    //Logs the User
+                    $login = $user->login($_POST['email'], $_POST['password'], $remember);
+                    if ($login) {
+                        header("Location: index.php");
+                        die();
+                    } else { ?>
+                        <div style="padding-bottom: 10px;"><div class="alert alert-danger no-border-radius no-margin" role="alert">You're Email or Password is incorrect</div></div>
+                    <?php	}
+                } else {
+                    foreach($check->errors() as $error) {
+                        echo '<div style="padding-bottom: 10px;"><div class="alert alert-danger no-border-radius no-margin" role="alert">'.$error.'</div></div>';
+                    }
+                }
+            }
+            ?>
+            <form autocomplete="off" method="POST" action="" class="padding-10 centre">
+                <div class="padding-10"><input type="text" class="form-control input-lg" name="email" placeholder="Email" required></div>
+                <div class="padding-10"><input type="password" class="form-control input-lg" name="password" placeholder="Password" required></div>
+                <div class="padding-10">
+                    <div class="pull-left">
+                        <input type="checkbox" name="rememberme" id="rememberme">
+                        <label for="rememberme">Remember me</label>
+                    </div>
+                    <button type="submit" class="padding-10 btn btn-success pull-right">Sign In</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+<?php require('template/footer.phtml') ?>

@@ -1,0 +1,40 @@
+<?php require('template/header.phtml');
+    $basket = $_SESSION['basket'];
+    //Checks that POST isn't empty
+    if(!empty($_POST)) {
+        //If returning the DVDs Update the DVD and change the Rented and user_id to 0
+        if (!empty($_POST['return'])) {
+            $DVD = new DVD($_POST['return']);
+            $DVD->update("UPDATE dvd_details SET rented='0', user_id='0' WHERE id=" . $DVD->data()->id . "");
+            header("Location: rented.php");
+            die();
+        }
+    }
+$DVD = new DVD();
+$rented = $DVD->getRented($user);
+
+if (empty($rented)) { ?>
+    <h2>You haven't rented any DVDs</h2>
+<?php } elseif (!empty($rented)) { ?>
+    <h2>Your Rented DVDs</h2>
+<?php }
+//Displays each rented DVD.
+foreach ($rented as $item) {
+    $DVD = new DVD($item->id);
+    $data = $DVD->data();
+?>
+        <div Class="film_details col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="dvds.php?id=<?php echo $data->id ?>"><img src="<?php echo $data->picture;?>" class="poster-image" alt="..."></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-10">
+                <a href="dvds.php?id=<?php echo $data->id ?>"><h2><?php echo $data->title . "(" . $data->year_of_release . ")"; ?></h2></a>
+                <h4>Description</h4>
+                <p><?php echo $data->synopsis; ?></p>
+                <p><form autocomplete="off" method="POST" action="" ><button type="button submit" class="btn btn-primary-outline">Return</button><input type="hidden" name="return" value=<?php echo $data->id; ?>></form></p>
+            </div>
+        </div>
+
+<?php } require('template/footer.phtml'); ?>
