@@ -8,3 +8,4 @@ $view = new stdClass();
 $view->pageTitle = 'Homepage';
 require_once('Views/index.phtml');
 $APICall = new APICall();
+$APICall->getChannelInfo(2002);
