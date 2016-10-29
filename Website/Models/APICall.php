@@ -37,8 +37,8 @@ class APICall
         $json = file_get_contents("http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?channels=".$channelCode."&time=". $this->_d->format('YmdHi')."&dur=10&detail=2&siteId=1");
         $obj = json_decode($json);
         //echo "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?channels=".$channelCode."&time=". $this->_d->format('YmdHi')."&dur=10&detail=2&siteId=1";
-        var_dump($json);
+        //var_dump($json);
         //$obj->channels->program->title;
-
+        
     }
 }

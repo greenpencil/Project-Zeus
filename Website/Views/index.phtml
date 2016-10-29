@@ -24,26 +24,15 @@
         </div>
 
         <div class="row" style="padding-left: 10%;padding-right: 10%">
-            <div class="col-md-3 col-sm-12 padding10">
-                <a href="/" class="btn btn-primary"><img src="./img/game-of-thrones.png" style="width: 150px" ></a>
-                <br/>
-                Sky Atlantic
-            </div>
-            <div class="col-md-3 col-sm-12 padding10">
-                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/bake-off.png" style="width: 150px; " ></a>
-                <br/>
-                BBC One
-            </div>
-            <div class="col-md-3 col-sm-12 padding10">
-                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/top-gear.png" style="width: 150px; " ></a>
-                <br/>
-                Dave
-            </div>
-            <div class="col-md-3 col-sm-12 padding10">
-                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/premier-league.png" style="width: 150px; " ></a>
-                <br/>
-                Sky Sports
-            </div>
+            <?php foreach ($view->options as $option) {
+                ?>
+                <div class="col-md-3 col-sm-12 padding10">
+                    <a href="/" class="btn btn-primary"><img src="./img/game-of-thrones.png" style="width: 150px" ></a>
+                    <br/>
+                    <?php echo $option->getChannelTitle() ?>
+                </div>
+                <?php
+            } ?>
         </div>
 
         <hr/>
