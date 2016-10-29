@@ -35,9 +35,8 @@ class APICall
     public function getChannelInfo($channelCode){
         ini_set("allow_url_fopen", 1);
         $json = file_get_contents("http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?channels=".$channelCode."&time=". $this->_d->format('YmdHi')."&dur=10&detail=2&siteId=1");
-        $obj = json_decode($json);
-        //echo "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?channels=".$channelCode."&time=". $this->_d->format('YmdHi')."&dur=10&detail=2&siteId=1";
-        //var_dump($json);
+        $obj = json_decode($json);    
+        
         //$obj->channels->program->title;
         
     }
