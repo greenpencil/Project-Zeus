@@ -1,0 +1,68 @@
+<?php require('template/header.phtml') ?>
+<div class="container">
+    <div class="col-md-12 col-xs-12 col-centered">
+        <section>
+            <h2 class="text-center padding-10">Register an Account</h2>
+            <?php
+            //Checks that POST isn't empty
+            if(!empty($_POST)) {
+                //Performs the Checks on the Submitted form for registration
+                $check = new Check();
+                $check->required($_POST['email'], "Email");
+                $check->required($_POST['password'], "Password");
+                $check->required($_POST['repeatpassword'], "Repeat Password");
+                $check->required($_POST['fullname'], "Fullname");
+                $check->required($_POST['addressline1'], "Address Line 1");
+                $check->required($_POST['city'], "City");
+                $check->required($_POST['country'], "Country");
+                $check->required($_POST['postcode'], "Postcode");
+                $check->required($_POST['phonenumber'], "Phone Number");
+                $check->matches($_POST['password'], $_POST['repeatpassword'], "Passwords");
+                $check->unique($_POST['email'], "users", "email");
+                //Checks the all the checks have been passed.
+                if($check->passed()) {
+                    //Sets up the new User.
+                    $user = new User();
+                    $salt = salt(32);
+                    $email = sanitize($_POST['email']);
+                    $password = encrypt($_POST['password'], $salt);
+                    $fullname = sanitize($_POST['fullname']);
+                    $address = sanitize(addressCheck($_POST['addressline1']) . addressCheck($_POST['addressline2']) . addressCheck($_POST['addressline3']) . addressCheck($_POST['city']) . addressCheck($_POST['country']) . $_POST['postcode']);
+                    $phonenumber = sanitize($_POST['phonenumber']);
+                    $joined = date('Y-m-d H:i:s');
+                    //Attmepts to input the User into the database.
+                    try {
+                        $user->create("INSERT INTO users (email, password, fullname, address, phonenumber, salt, joined) VALUES ('" . $email . "','" . $password . "','" . $fullname . "','" . $address . "','" . $phonenumber . "','" . $salt  . "','" . $joined . "')");
+                        header("Location: index.php");
+                        die();
+                    } catch (Exception $e) {
+                        die($e->getMessage());
+                    }
+                } else {
+                    foreach($check->errors() as $error) {
+                        echo '<div style="padding-bottom: 10px;"><div class="alert alert-danger no-border-radius no-margin" role="alert">'.$error.'</div></div>';
+                    }
+                }
+            }
+            ?>
+            <form autocomplete="off" method="POST" action="" class="padding-10 centre">
+                <div class="col-lg-6 padding-10"><input type="text" class="form-control input-lg" name="email" placeholder="Email" required></div>
+                <div class="col-lg-6 padding-10"><input type="text" class="form-control input-lg" name="fullname" placeholder="Fullname" required></div>
+                <div class="col-lg-6 padding-10"><input type="password" class="form-control input-lg" name="password" placeholder="Password" required></div>
+                <div class="col-lg-6 padding-10"><input type="password" class="form-control input-lg" name="repeatpassword" placeholder="Re-Enter Password" required></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="addressline1" placeholder="Address Line 1" required></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="addressline2" placeholder="Address Line 2" ></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="addressline3" placeholder="Address Line 3" ></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="city" placeholder="City" required></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="country" placeholder="Country" required></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="postcode" placeholder="Postcode" required></div>
+                <div class="col-lg-12 padding-10"><input type="text" class="form-control input-lg" name="phonenumber" placeholder="Phone Number" required></div>
+                <div class="padding-10" Style="padding-bottom: 100px">
+                    <button type="submit" class="padding-10 btn btn-success pull-right">Register</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+<?php require('template/footer.phtml') ?>
