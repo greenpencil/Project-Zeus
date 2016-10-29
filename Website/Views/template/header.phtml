@@ -1,161 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html>
+    <head>
+        <title></title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png">
-
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <link href="css/theme.css" rel="stylesheet">
-
-    <title>Insidific Video - <?php echo $view->pageTitle; ?></title>
-</head>
-<header>
-    <div class="container-fluid col-md-12 top-menu">
-        <div class="row">
-            <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-custom col-md-12 the-nav-bar">
-                <div class="container-fluid top-menu">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header page-scroll">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand Logo-Brand" href="index.php"><img style="cursor: pointer;" src="http://insidific.com/img/website-header.png" alt="Insidific"/></a>
-                        <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs search-bar">
-                            <form autocomplete="off" method="GET" action="search.php" class="padding-10 centre">
-                                <div class="input-group menu-padding">
-                                     <input type="text" name="search" class="form-control" placeholder="Search for...">
-
-                                     <span class="input-group-btn">
-                                         <select class="form-control" Style="width: 100px;" name="type">
-                                             <option value="title">Title</option>
-                                             <option value="director_id">Director</option>
-                                             <option value="genre_id">Genre</option>
-                                             <option value="cast">Cast</option>
-                                             <option value="studio">Studio</option>
-                                         </select>
-                                         <button type="submit" class="btn btn-default" type="button">Search</button>
-                                     </span>
-                                </div><!-- /input-group -->
-                            </form>
-                        </div><!-- /.col-lg-6 -->
-                        <?php if(!($user->isLoggedIn())) {    ?>
-                            <div class="pull-right hidden-xs menu-padding">
-                                    <a class="btn btn-default" href="login.php" role="button">Sign In</a>
-                                    <a class="btn btn-default" href="register.php" role="button">Register</a>
-                            </div>
-                        <?php } else { ?>
-                            <div class="pull-right hidden-xs menu-padding">
-                                <ul class="nav nav-pills">
-                                    <li role="presentation" class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <?php echo $user->data()->fullname; ?><span class="caret"></span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="basket.php">Basket</a>
-                                            </li>
-                                            <li>
-                                                <a href="rented.php">Rented</a>
-                                            </li>
-                                            <li>
-                                                <a href="settings.php">Settings</a>
-                                            </li>
-                                            <li>
-                                                <a href="logout.php">Logout</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    ...
-                                </ul>
-                            </div>
-                        <?php } ?>
-                    </div>
+    <body>
+    <nav class="navbar navbar-default" style="border-radius: 0px;">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.php">Zeus</a>
                 </div>
-
-                <div class="container-fluid top-menu">
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <div class="visible-xs search-bar col-xs-12">
-                                <form autocomplete="off" method="GET" action="search.php" class="padding-10 col-xs-12">
-                                    <div class="input-group menu-padding col-xs-12">
-                                         <div style="width: 275px;"><input type="text" name="search" class="col-xs-6 form-control" placeholder="Search for..."></div>
-
-                                         <span class="input-group-btn" >
-                                             <div>
-                                                <select class="form-control" name="type">
-                                                    <option value="title">Title</option>
-                                                    <option value="director_id">Director</option>
-                                                    <option value="genre_id">Genre</option>
-                                                    <option value="cast">Cast</option>
-                                                    <option value="studio">Studio</option>
-                                                </select>
-                                             </div>
-                                            <button type="submit" class="btn btn-default" type="button">Search</button>
-                                         </span>
-                                    </div><!-- /input-group -->
-                                </form>
-                            </div><!-- /.col-lg-6 -->
-                        <?php if(!($user->isLoggedIn())) {    ?>
-                                <li class="visible-xs"><a href="login.php">Sign In</a></li>
-
-                                <li class="visible-xs"><a href="register.php">Register</a></li>
-                            <?php } else { ?>
-                                <li class = "dropdown visible-xs">
-                                    <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-                                        <?php echo $user->data()->fullname; ?><b class = "caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="basket.php">Basket</a>
-                                        </li>
-                                        <li>
-                                            <a href="rented.php">Rented</a>
-                                        </li>
-                                        <li>
-                                            <a href="settings.php">Settings</a>
-                                        </li>
-                                        <li>
-                                            <a href="logout.php">Logout</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            <?php } ?>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                <?php
+                    if(!($user->isLoggedIn())) {
+                ?> 
+                    <li><p class="navbar-text">Already have an account?</p></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
                             <li>
-                                <a href="index.php"">Home</a>
-                            </li>
-                            <li>
-                                <a href="search.php?search=Action%2FAdventure&type=genre_id">Action/Adventure</a>
-                            </li>
-                            <li>
-                                <a href="search.php?search=Science+Fiction&type=genre_id">Science Fiction</a>
-                            </li>
-                            <li>
-                                <a href="search.php?search=Fantasy&type=genre_id">Fantasy</a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form" role="form" method="post" action="login.php" accept-charset="UTF-8" id="login-nav">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="email">Email address</label>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="password">Password</label>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>                                
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="rememberme" id="rememberme"> Stay logged in
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="bottom text-center">
+                                        New here ? <a href="register.php"><b>Join Us</b></a>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
+                    </li>
+                <?php 
+                } else { ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><?php echo $user->data()->fullname; ?></b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>Account</li>
+                            <li><a href="settings.php">Settings</a></li>
+                            <li><a href="logout.php">Logout</a></li>
+                        </ul>
+                    </li>                    
+                <?php
+                }
+                ?>    
+                </ul>
+            </div>
         </div>
-    </div>
-</header>
-<body>
-    <div class="container-fluid col-md-12">
+    </nav>

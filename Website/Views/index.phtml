@@ -1,103 +1,100 @@
 <?php require('template/header.phtml') ?>
-<div class="film-carousel">
-    <h2>Latest Films</h2>
-    <div class="row">
-        <?php $newDVD = new DVD();
-        $results = $newDVD->getLatest();
-        //Displays the Latest DVDs added to the Database
-        foreach($results as $result) {
-            $latestDVD = new DVD($result->id); ?>
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
-                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
-                </a>
+<div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12" style="padding: 2%">
+                <div style="background-color: #dddddd; height: 70%">
+                    <br/>
+                </div>
             </div>
-        <?php } ?>
-    </div>
-</div>
-<div class="film-carousel">
-    <h2>Action/Adventure Films</h2>
-    <div class="row">
-        <?php $newDVD = new DVD();
-        $results = $newDVD->getListGenre("action");
-        $i = 0;
-        //Displays the DVDs of the Genre Action/Adventure
-        foreach($results as $result) {
-            $latestDVD = new DVD($result->id); ?>
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
-                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
-                </a>
+            <div class="col-md-3 col-sm-12">
+                One of three columns
             </div>
-        <?php $i++;
-            if($i === 6) {
-                break;
-            }
-        } ?>
-    </div>
-</div>
-<div class="film-carousel">
-   <h2>Science Fiction Films</h2>
-   <div class="row">
-       <?php $newDVD = new DVD();
-       $results = $newDVD->getListGenre("Science Fiction");
-       $i = 0;
-       //Displays the DVDs of the Genre Science Fiction
-       foreach($results as $result) {
-           $latestDVD = new DVD($result->id); ?>
-           <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-               <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
-                   <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
-               </a>
-           </div>
-           <?php $i++;
-           if($i === 6) {
-                break;
-           }
-       } ?>
-   </div>
-</div>
-<div class="film-carousel">
-    <h2>Fantasy Films</h2>
-    <div class="row">
-        <?php $newDVD = new DVD();
-        $results = $newDVD->getListGenre("Fantasy");
-        $i = 0;
-        //Displays the DVDs of the Genre Fantasy
-        foreach($results as $result) {
-            $latestDVD = new DVD($result->id); ?>
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
-                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
-                </a>
+        </div>
+
+        <div class="row" style="margin-top: 20px;margin-bottom: 20px">
+            <div class="col-sm-4">
+                Time left in current slot: 15:00:10
             </div>
-            <?php $i++;
-            if($i === 6) {
-                break;
-            }
-        } ?>
-    </div>
-</div>
-<div class="film-carousel">
-    <h2>Family Films</h2>
-    <div class="row">
-        <?php $newDVD = new DVD();
-        $results = $newDVD->getListGenre("Family");
-        $i = 0;
-        //Displays the DVDs of the Genre Family
-        foreach($results as $result) {
-            $latestDVD = new DVD($result->id); ?>
-            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
-                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
-                </a>
+            <div class="col-sm-4">
+                Current time 17:45
             </div>
-            <?php $i++;
-            if($i === 6) {
-                break;
-            }
-        } ?>
+            <div class="col-sm-4">
+                Time left to vote: 10:00:09
+            </div>
+        </div>
+
+        <div class="row" style="padding-left: 10%;padding-right: 10%">
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary"><img src="./img/game-of-thrones.png" style="width: 150px" ></a>
+                <br/>
+                Sky Atlantic
+            </div>
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/bake-off.png" style="width: 150px; " ></a>
+                <br/>
+                BBC One
+            </div>
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/top-gear.png" style="width: 150px; " ></a>
+                <br/>
+                Dave
+            </div>
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/premier-league.png" style="width: 150px; " ></a>
+                <br/>
+                Sky Sports
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Game Of Thrones</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                        <span class="sr-only">60%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Great British Bake Off</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                        <span class="sr-only">20%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Top Gear</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100" style="width: 9%;">
+                        <span class="sr-only">9%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Premier League</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+                        <span class="sr-only">1%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div style="margin-bottom: 20px">
+            Copyright 2016 &copy; 3 Of A Kind All Rights Reserved
+        </div>
+
     </div>
-</div>
 
 <?php require('template/footer.phtml') ?>
