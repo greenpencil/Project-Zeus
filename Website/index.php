@@ -6,6 +6,10 @@ if(!isset($user)) {
 }
 $view = new stdClass();
 $view->pageTitle = 'Homepage';
+<<<<<<< HEAD
+=======
+require_once('Views/index.phtml');
+>>>>>>> master
 $APICall = new APICall();
 $channel1 = $APICall->getChannelInfo(2002);
 $channel2 = $APICall->getChannelInfo(2006);

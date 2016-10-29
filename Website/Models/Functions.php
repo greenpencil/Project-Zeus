@@ -65,4 +65,12 @@ if((isset($_COOKIE['actInsid'])) && (!isset($_SESSION['sessionInsid']))) {
     }
 }
 
+function getPoster($title) {
+    $title = str_replace(' ', '+', $title);
+    ini_set("allow_url_fopen", 1);
+    $json = file_get_contents("http://www.omdbapi.com/?t=". $title ."&y=&plot=short&r=json");
+    $obj = json_decode($json);
+    return $obj->Poster;
+}
+
 ?>
