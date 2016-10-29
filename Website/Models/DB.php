@@ -10,7 +10,7 @@ class DB {
     //Constructs the Database, connecting to the database.
     private function __construct() {
         try {
-            $this->_PDO = new PDO('mysql:dbname=zeus;host=127.0.0.1', 'root', 'katie');
+            $this->_PDO = new PDO('mysql:dbname=zeus;host=127.0.0.1', 'root', '');
         } catch (PDOException $e) {
             die($e->getMessage());
         }
