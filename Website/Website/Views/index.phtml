@@ -1,0 +1,103 @@
+<?php require('template/header.phtml') ?>
+<div class="film-carousel">
+    <h2>Latest Films</h2>
+    <div class="row">
+        <?php $newDVD = new DVD();
+        $results = $newDVD->getLatest();
+        //Displays the Latest DVDs added to the Database
+        foreach($results as $result) {
+            $latestDVD = new DVD($result->id); ?>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
+                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
+                </a>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<div class="film-carousel">
+    <h2>Action/Adventure Films</h2>
+    <div class="row">
+        <?php $newDVD = new DVD();
+        $results = $newDVD->getListGenre("action");
+        $i = 0;
+        //Displays the DVDs of the Genre Action/Adventure
+        foreach($results as $result) {
+            $latestDVD = new DVD($result->id); ?>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
+                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
+                </a>
+            </div>
+        <?php $i++;
+            if($i === 6) {
+                break;
+            }
+        } ?>
+    </div>
+</div>
+<div class="film-carousel">
+   <h2>Science Fiction Films</h2>
+   <div class="row">
+       <?php $newDVD = new DVD();
+       $results = $newDVD->getListGenre("Science Fiction");
+       $i = 0;
+       //Displays the DVDs of the Genre Science Fiction
+       foreach($results as $result) {
+           $latestDVD = new DVD($result->id); ?>
+           <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+               <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
+                   <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
+               </a>
+           </div>
+           <?php $i++;
+           if($i === 6) {
+                break;
+           }
+       } ?>
+   </div>
+</div>
+<div class="film-carousel">
+    <h2>Fantasy Films</h2>
+    <div class="row">
+        <?php $newDVD = new DVD();
+        $results = $newDVD->getListGenre("Fantasy");
+        $i = 0;
+        //Displays the DVDs of the Genre Fantasy
+        foreach($results as $result) {
+            $latestDVD = new DVD($result->id); ?>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
+                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
+                </a>
+            </div>
+            <?php $i++;
+            if($i === 6) {
+                break;
+            }
+        } ?>
+    </div>
+</div>
+<div class="film-carousel">
+    <h2>Family Films</h2>
+    <div class="row">
+        <?php $newDVD = new DVD();
+        $results = $newDVD->getListGenre("Family");
+        $i = 0;
+        //Displays the DVDs of the Genre Family
+        foreach($results as $result) {
+            $latestDVD = new DVD($result->id); ?>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="dvds.php?id=<?php echo $latestDVD->data()->id ?>" class="thumbnail">
+                    <img src="<?php echo $latestDVD->data()->picture ?>" class="poster-image" alt="...">
+                </a>
+            </div>
+            <?php $i++;
+            if($i === 6) {
+                break;
+            }
+        } ?>
+    </div>
+</div>
+
+<?php require('template/footer.phtml') ?>
