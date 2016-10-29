@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <title></title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+    <nav class="navbar navbar-default" style="border-radius: 0px;">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Zeus</a>
+                </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">Already have an account?</p></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                                <div class="help-block text-right"><a href="">Forgotten Password?</a></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> Stay logged in
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="bottom text-center">
+                                        New here ? <a href="#"><b>Join Us</b></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-12" style="padding: 2%">
+                <div style="background-color: #dddddd; height: 70%">
+                    <br/>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                One of three columns
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;margin-bottom: 20px">
+            <div class="col-sm-4">
+                Time left in current slot: 15:00:10
+            </div>
+            <div class="col-sm-4">
+                Current time 17:45
+            </div>
+            <div class="col-sm-4">
+                Time left to vote: 10:00:09
+            </div>
+        </div>
+
+        <div class="row" style="padding-left: 10%;padding-right: 10%">
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary"><img src="./img/game-of-thrones.png" style="width: 150px" ></a>
+                <br/>
+                Sky Atlantic
+            </div>
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/bake-off.png" style="width: 150px; " ></a>
+                <br/>
+                BBC One
+            </div>
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/top-gear.png" style="width: 150px; " ></a>
+                <br/>
+                Dave
+            </div>
+            <div class="col-md-3 col-sm-12 padding10">
+                <a href="/" class="btn btn-primary" style="height: inherit"><img src="./img/premier-league.png" style="width: 150px; " ></a>
+                <br/>
+                Sky Sports
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Game Of Thrones</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                        <span class="sr-only">60%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Great British Bake Off</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                        <span class="sr-only">20%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Top Gear</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100" style="width: 9%;">
+                        <span class="sr-only">9%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 padding10">
+                <p>Premier League</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+                        <span class="sr-only">1%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div style="margin-bottom: 20px">
+            Copyright 2016 &copy; 3 Of A Kind All Rights Reserved
+        </div>
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </body>
+</html>
