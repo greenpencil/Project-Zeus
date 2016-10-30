@@ -10,7 +10,7 @@ class DB {
     //Constructs the Database, connecting to the database.
     private function __construct() {
         try {
-            $this->_PDO = new PDO('mysql:dbname=zeus;host=127.0.0.1', 'root', '');
+            $this->_PDO = new PDO('mysql:dbname=zeus;host=127.0.0.1', 'root', 'katie');
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -80,12 +80,12 @@ class DB {
         return false;
     }
 
-    //Get's all the results which are stored after fetching the query
+    //Get's all the results whfich are stored after fetching the query
     public function getResults() {
         return $this->_results;
     }
 
-    //Gets the first item stored in _results
+    //Gets the first ite21m stored in _results
     public function getFirst() {
         return $this->_results[0];
     }
@@ -102,6 +102,6 @@ class DB {
 
     //Gets the Database connection
     public function getPDO() {
-        return $this->_pdo;
+        return $this->_PDO;
     }
 }

@@ -36,25 +36,6 @@ function setUniqueID() {
     return encrypt(uniqid());
 }
 
-//Sorts the Address into a readable form from what is inputted
-function addressCheck($string = '') {
-    if(!($string === '')) {
-        return $string . ', ';
-    }
-    return '';
-}
-
-//Add's any new DVDs to the basket
-function addToBasket($DVDId) {
-        $newDVD = array($DVDId);
-        if(!isset($_SESSION['basket'])){
-            $_SESSION['basket'] = array();
-        }
-        if (!(in_array($newDVD ,  $_SESSION['basket']))) {
-            $_SESSION['basket'][] = $newDVD;
-        }
-}
-
 //Checks whether the User is remembered through a Cookie and if so logs the User back in.
 if((isset($_COOKIE['actInsid'])) && (!isset($_SESSION['sessionInsid']))) {
     $encryption = $_COOKIE['actInsid'];
