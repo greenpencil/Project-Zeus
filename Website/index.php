@@ -5,7 +5,7 @@ if(!isset($user)) {
     $user = new User();
 }
 $setup = new SetUp();
-
+$chat = new Chat();
 $view = new stdClass();
 $view->pageTitle = 'Homepage';
 $setup->generateChannels();

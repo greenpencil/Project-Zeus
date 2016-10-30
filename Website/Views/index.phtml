@@ -1,38 +1,11 @@
 <?php require('template/header.phtml') ?>
 <div class="container">
         <div class="row">
-            <div class="col-md-9 col-sm-12">
+            <div class="col-md-12 col-sm-12">
                 <div style="background-color: #dddddd;">
                     <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/EI0ib1NErqg" frameborder="0" allowfullscreen></iframe></div>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div style="background-color: #1c1c1c;">
-                    <div id="wrapper">                         
-                        <div id="chatbox">
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                            <span>Chat text</span><br>
-                        </div>
-                         
-                        <form name="message" action="">
-                            <input type="submit" name="submit" value="Submit" style="float: right" />
-                            <div style="overflow: hidden; padding-right: .5em;">
-                                <input type="text" name="msg" style="width: 100%;" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
 
         <div class="row" style="margin-top: 20px;margin-bottom: 20px">
@@ -51,7 +24,7 @@
             <?php foreach ($view->options as $option) {
                 ?>
                 <div class="col-md-3 col-sm-12 padding10">
-                    <a class="btn btn-primary<?php echo " " . $option->getChannel()->getId() . "-click"; ?>"><img src="<?php echo getPoster($option->getShowTitle()); ?>" style="width: 150px" ></a>
+                    <a class="btn btn-primary<?php echo " " . $option->getChannel()->getId() . "-click"; ?>"><img src="<?php echo getPoster($option->getShowTitle()); ?>" style="width: 150px" onError="this.onerror=null;this.src='<?php echo getPoster("Top Gear"); ?>';"></a>
                     <br/>
                     <?php echo $option->getShowTitle(); ?></br>
                     <?php echo $option->getChannel()->getName(); ?></br>
@@ -79,7 +52,7 @@
             <div class="col-sm-12 padding10">
                 <p><?php echo $view->options[0]->getShowTitle(); ?></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                         <span class="sr-only">60%</span>
                     </div>
                 </div>
@@ -98,14 +71,14 @@
                 , success: function(data){
                     $(".progress-bar-success").css('width', data);;       
                 }});
-            }, 2000);
+            }, 1000);
         </script>
 
         <div class="row">
             <div class="col-sm-12 padding10">
                 <p><?php echo $view->options[1]->getShowTitle(); ?></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                         <span class="sr-only">20%</span>
                     </div>
                 </div>
@@ -124,14 +97,14 @@
                 , success: function(data){
                     $(".progress-bar-info").css('width', data);;       
                 }});
-            }, 2000);
+            }, 1000);
         </script>
 
         <div class="row">
             <div class="col-sm-12 padding10">
                 <p><?php echo $view->options[2]->getShowTitle(); ?></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 9%;">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                         <span class="sr-only">9%</span>
                     </div>
                 </div>
@@ -150,14 +123,14 @@
                 , success: function(data){
                     $(".progress-bar-warning").css('width', data);;       
                 }});
-            }, 2000);
+            }, 1000);
         </script>
 
         <div class="row">
             <div class="col-sm-12 padding10">
                 <p><?php echo $view->options[3]->getShowTitle(); ?></p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                         <span class="sr-only">1%</span>
                     </div>
                 </div>
@@ -176,7 +149,7 @@
                 , success: function(data){
                     $(".progress-bar-danger").css('width', data);;       
                 }});
-            }, 2000);
+            }, 1000);
         </script>
 
         <hr/>
