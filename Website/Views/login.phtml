@@ -16,7 +16,7 @@
                     $remember = (isset($_POST['rememberme'])) ? true : false;
                     //Logs the User
                     $login = $user->login($_POST['email'], $_POST['password'], $remember);
-                    if ($login) {
+                    if ($login) {                         
                         header("Location: index.php");
                         die();
                     } else { ?>

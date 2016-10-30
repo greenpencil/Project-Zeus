@@ -37,12 +37,12 @@ class User
     }
 
     //Find the User based on either there ID or email
-    public function find($user = null) {
-        if($user) {
-            $field = (is_numeric($user)) ? 'id' : 'email';
-            $data = $this->_db->specificSQL("SELECT * FROM users WHERE " . $field . " = '" . $user . "'");
+    public function find($user = null) {        
+        if($user) {            
+            $field = (is_numeric($user)) ? 'id' : 'email';            
+            $data = $this->_db->specificSQL("SELECT * FROM users WHERE " . $field . " = '" . $user . "'");                        
             if($data->getCount() > 0) {
-                $this->_data = $data->getFirst();
+                $this->_data = $data->getFirst();                
                 return true;
             }
         }
@@ -52,12 +52,12 @@ class User
     //Logs the User in
     public function login($username = null, $password = null, $remember = false) {
             //Finds the User based on the username inputted
-            $user = $this->find($username);
-            if($user) {
+            $user = $this->find($username);            
+            if($user) {                           
                 //Checks that the Password inputted is the same as the one stored in association to the user.
                 if($this->data()->password === encrypt($password, $this->data()->salt)) {
                     //Creates the Session for the User
-                    $_SESSION[$this->_sessionName] = $this->data()->id;
+                    $_SESSION[$this->_sessionName] = $this->data()->id;                    
                     if($remember) {
                         //If the User selects to tbe remembered then a Cookie is set up. For when he returns to the site he'll be logged in.
                         $encryption = setUniqueID();
