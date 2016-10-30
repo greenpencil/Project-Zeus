@@ -26,6 +26,17 @@ class DatabaseCalls
         return new Channel($return->id, $return->title,$return->number,$return->code);
     }
 
+    public function getProgramById($programid)
+    {
+        $this->_db->query("SELECT * FROM programs WHERE id= ".$programid);
+        $return = $this->_db->getFirst();
+        $name = $return->name;
+        $img = $return->image;
+        $sd = $return->short_desc;
+        $ch = $return->channel_id;
+        return new Program($return->id,$name, $img, $sd, $ch);
+    }
+
 
     public function getCurrentBlockId()
     {
@@ -66,6 +77,18 @@ class DatabaseCalls
         $img = $return->image;
         $sd = $return->short_desc;
         $ch = $return->channel_id;
-        return new Program($name, $img, $sd, $ch);
+        return new Program($return->id, $name, $img, $sd, $ch);
+    }
+    public function getLastVote()
+    {
+        $this->_db->query("SELECT * FROM settings WHERE name='last_program_vote'");
+        $result = $this->_db->getFirst();
+        return $this->getProgramById($result->value);
+    }
+
+    public function setWinner($winner_id)
+    {
+        $updateq = "UPDATE settings SET value='".$winner_id."' WHERE name='last_program_vote'";
+        $this->_db->query($updateq);
     }
 }

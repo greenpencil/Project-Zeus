@@ -1,5 +1,5 @@
 <?php
-
+require_once ('DatabaseCalls.php');
 /**
  * Created by PhpStorm.
  * User: Tom
@@ -27,13 +27,20 @@ class Voting
     }
 
     public function calcPercentage($blockid, $channelid){
+
         $this->db->query('SELECT * FROM votes WHERE block_id='.$blockid);
         $total =  $this->db->getCount();
         $this->db->query('SELECT * FROM votes WHERE block_id='.$blockid.' AND channel_id='.$channelid);
         $options =  $this->db->getCount();
 
-        return ($options / $total) * 100;
+        if($options == 0)
+        {
+            return 0;
+        } else {
+            return ($options / $total) * 100;
+        }
     }
+
 
     function getVoteNum($fUserid)
     {

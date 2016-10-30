@@ -15,6 +15,15 @@ class Program
     private $desc;
     private $channel;
     private $dbcalls;
+    private $id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Option constructor.
@@ -25,8 +34,9 @@ class Program
      * @param $desc
      * @param $channelCode
      */
-    public function __construct($_showTitle, $_image, $desc, $channelId)
+    public function __construct($program_id, $_showTitle, $_image, $desc, $channelId)
     {
+        $this->id = $program_id;
         $this->_showTitle = $_showTitle;
         $this->_image = $_image;
         $this->desc = $desc;

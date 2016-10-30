@@ -43,7 +43,7 @@ class SetUp
     }
 
     public function generateChannels(){
-        $nums = $this->UniqueRandomNumbersWithinRange(1,9, 4);
+        $nums = $this->UniqueRandomNumbersWithinRange(1,10, 4);
         foreach ($nums as $num)
         {
             $this->apiCall->addProgramToDB($num);
@@ -51,16 +51,6 @@ class SetUp
             $this->_db->query("INSERT INTO blocks_channels (block_id, channel_id) VALUES('.$blockid.', '".$num."')");
             //array_push(self::$programs, );
         }
-    }
-
-    public static function getListOfPrograms(){
-        //foreach ($this::$programs as $program)
-        //{
-            //$program.setChannel(getChannelById($channel))
-        //}
-        //.
-        //var_dump($this::$programs);
-        return self::$programs;
     }
     
     public function UniqueRandomNumbersWithinRange($min, $max, $quantity) {

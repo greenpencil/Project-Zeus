@@ -56,17 +56,17 @@ class APICall
             //var_dump($obj->channels->program);
             if(is_object($obj->channels->program))
             {
-                $option = new Program($obj->channels->program->title, null, $obj->channels->program->shortDesc, $channelid );
+                $option = new Program(null,$obj->channels->program->title, null, $obj->channels->program->shortDesc, $channelid );
 
             } else {
-                $option = new Program($obj->channels->program[0]->title, null, $obj->channels->program[0]->shortDesc, $channelid);
+                $option = new Program(null,$obj->channels->program[0]->title, null, $obj->channels->program[0]->shortDesc, $channelid);
             }
             $this->addToDB($option);
         }
         else {
             // hacky approach to the api sometimes not returning a channel
             // come dine with me is probably on anyway
-            $option = new Program("Come Dine with me", null, "In Chester, four cooks compete to win the £1000 prize as they go head-to-head, pulling out all the stops to impress, including an evening of French sophistication from Emma.", 4);
+            $option = new Program(null, "Come Dine with me", null, "In Chester, four cooks compete to win the £1000 prize as they go head-to-head, pulling out all the stops to impress, including an evening of French sophistication from Emma.", 4);
         }
         return $option;
     }
