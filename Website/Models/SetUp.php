@@ -46,7 +46,10 @@ class SetUp
         $nums = $this->UniqueRandomNumbersWithinRange(1,9, 4);
         foreach ($nums as $num)
         {
-            array_push(self::$programs, $this->apiCall->addProgramToDB($num));
+            $this->apiCall->addProgramToDB($num);
+            $blockid = $this->databaseCalls->getCurrentBlockId();
+            $this->_db->query("INSERT INTO blocks_channels (block_id, channel_id) VALUES('.$blockid.', '".$num."')");
+            //array_push(self::$programs, );
         }
     }
 

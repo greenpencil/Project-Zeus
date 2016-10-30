@@ -31,8 +31,9 @@ class APICall
     {
         $newShowTitle = $this->_db->getPDO()->quote($option->getShowTitle());
         $newShortDest = $this->_db->getPDO()->quote($option->getDesc());
+        $newBlock = (new DatabaseCalls())->getCurrentBlockId();
         //echo "INSERT INTO programs (name, short_desc, channel_id) VALUES (" . $newShowTitle . "," .$newShortDest. ",'" .$option->getChannel()."')";
-        $this->_db->insertSQL("INSERT INTO programs (name, short_desc, channel_id) VALUES (" . $newShowTitle . "," . $newShortDest . ",'" . $option->getChannel()->getId() . "')");
+        $this->_db->insertSQL("INSERT INTO programs (name, short_desc, channel_id, block_id) VALUES (" . $newShowTitle . "," . $newShortDest . ",'" . $option->getChannel()->getId() . "', '".$newBlock."')");
     }
 
     public function addProgramToDB($channelid){

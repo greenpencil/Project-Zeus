@@ -11,15 +11,12 @@ $chat = new Chat();
 $dbcalls = new DatabaseCalls();
 $view = new stdClass();
 $view->pageTitle = 'Homepage';
-//var_dump($view->options);
-// this generates options every time the page is loaded
-    $setup = new SetUp();
-// Make a new block
-    $setup->makeblock();
-// Generate the programs
-    $setup->generateChannels();
-
-$view->options = SetUp::getListOfPrograms();
-
 $view->block = $dbcalls->getCurrentBlockId();
+$listOfChannels = $dbcalls->getListOfChannelsInBlock($view->block);
+$view->options = array();
+foreach ($listOfChannels as $channel)
+{
+    array_push($view->options,$dbcalls->getPrograms($channel->getId(), $view->block));
+}
+
 require_once('Views/index.phtml');
