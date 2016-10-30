@@ -1,5 +1,5 @@
 <?php
 require_once '../Models/Functions.php';
 
-//echo calcPercentage($blockid, $channelid);
-echo rand(10, 90) . "%";
+$voting = new Voting();
+echo $voting->calcPercentage($_GET['blockid'], $_GET['channelid']). "%";

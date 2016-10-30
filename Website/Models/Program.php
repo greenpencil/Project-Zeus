@@ -1,5 +1,7 @@
 <?php
 
+require_once("DatabaseCalls.php");
+
 /**
  * Created by PhpStorm.
  * User: Tom
@@ -12,6 +14,7 @@ class Program
     private $_image;
     private $desc;
     private $channel;
+    private $dbcalls;
 
     /**
      * Option constructor.
@@ -22,12 +25,13 @@ class Program
      * @param $desc
      * @param $channelCode
      */
-    public function __construct($_showTitle, $_image, $desc, $channel)
+    public function __construct($_showTitle, $_image, $desc, $channelId)
     {
         $this->_showTitle = $_showTitle;
         $this->_image = $_image;
         $this->desc = $desc;
-        $this->channel = $channel;
+        $this->dbcalls = new DatabaseCalls();
+        $this->channel = $this->dbcalls->getChannelById($channelId);
     }
 
     /**

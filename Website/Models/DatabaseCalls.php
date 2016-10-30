@@ -23,7 +23,7 @@ class DatabaseCalls
     {
         $this->_db->query("SELECT * FROM channels WHERE id=".$channelid);
         $return = $this->_db->getFirst();
-        //return new Channel($this->_db->getFirst()->id, $this->);
+        return new Channel($return->id, $return->title,$return->number,$return->code);
     }
 
     
