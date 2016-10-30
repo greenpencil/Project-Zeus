@@ -29,16 +29,19 @@
                     <?php echo $option->getShowTitle(); ?></br>
                     <?php echo $option->getChannel()->getName(); ?></br>
                 </div>
+
                 <script>
                     $("<?php echo "." . $option->getChannel()->getId() . "-click"; ?>").click(function() { 
                         $.ajax({
-                            type: "POST"
+                            type: "GET"
                         , url: "Ajax_folder/vote_made.php?channelid=<?php echo $option->getChannel()->getId(); ?>&blockid=<?php echo $view->block; ?>&userid=<?php echo $user->data()->id; ?>"
                         , beforeSend: function(){
                         } 
                         , complete: function(){ 
                         }  
-                        , success: function(){       
+                        , success: function(event){
+                                alert(event);9
+                                //$(document).getElementById('message').html("Hello");
                         }});
                     });
                 </script>

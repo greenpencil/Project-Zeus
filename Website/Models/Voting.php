@@ -15,7 +15,14 @@ class Voting
     }
 
     public function addVote($blockid, $channelid, $userid){
-        $this->db->insertSQL("INSERT INTO votes (block_id, channel_id, user_id, time_stamp) VALUES ('" . $blockid . "','" . $channelid . "','" . $userid . "','" . date('Y-m-d H:i:s') . "')");
+        if($this->checkUserVoted($userid,$blockid) == 0)
+        {
+            $this->db->insertSQL("INSERT INTO votes (block_id, channel_id, user_id, time_stamp) VALUES ('" . $blockid . "','" . $channelid . "','" . $userid . "','" . date('Y-m-d H:i:s') . "')");
+            return "You have successfully voted";
+        }
+        else{
+            return "Vote unsuccessful";
+        }
     }
 
     public function getUserVotes($fUserid){
@@ -47,5 +54,16 @@ class Voting
         $getVoteNum =  $this->db->query('SELECT * FROM vote WHERE USER_ID = ' . $fUserid);
         $getVoteNum->execute();
         return $getVoteNum->rowCount();
+    }
+
+    function checkUserVoted($userid, $blockid)
+    {
+        $this->db->query('SELECT * FROM votes WHERE block_id='.$blockid.' AND user_id='.$userid);
+        $total =  $this->db->getCount();
+        if($total == 0) {
+            return 0;
+        }else{
+            return 1;
+        }
     }
 }
