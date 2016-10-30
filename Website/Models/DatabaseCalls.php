@@ -14,21 +14,17 @@ class DatabaseCalls
      * DatabaseCalls constructor.
      * @param $_db
      */
-    public function __construct($_db)
+    public function __construct()
     {
         $this->_db = DB::getInstance();
     }
 
-    public function getChannelFromDB($channelid)
+    public function getChannelById($channelid)
     {
-        $channelArray = new Option();
-
+        $this->_db->query("SELECT * FROM channels WHERE id=".$channelid);
+        $return = $this->_db->getFirst();
+        //return new Channel($this->_db->getFirst()->id, $this->);
     }
 
-
-    public function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
-        $numbers = range($min, $max);
-        shuffle($numbers);
-        return array_slice($numbers, 0, $quantity);
-    }
+    
 }
