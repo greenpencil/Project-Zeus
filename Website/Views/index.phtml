@@ -33,7 +33,7 @@
                     $("<?php echo "." . $option->getChannel()->getId() . "-click"; ?>").click(function() { 
                         $.ajax({
                             type: "POST"
-                        , url: "Ajax_folder/vote_made.php?channelid=<?php echo $option->getChannel()->getId(); ?>&blockid=1&userid=<?php echo $user->data()->id; ?>"
+                        , url: "Ajax_folder/vote_made.php?channelid=<?php echo $option->getChannel()->getId(); ?>&blockid=<?php echo $view->block; ?>&userid=<?php echo $user->data()->id; ?>"
                         , beforeSend: function(){
                         } 
                         , complete: function(){ 
@@ -62,7 +62,7 @@
             setInterval( function() { 
                 $.ajax({
                     type: "POST"
-                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[0]->getChannel()->getId(); ?>&blockid=1"
+                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[0]->getChannel()->getId(); ?>&blockid=<?php echo $view->block; ?>"
                 , beforeSend: function(){
 
                 } 
@@ -88,7 +88,7 @@
             setInterval( function() { 
                 $.ajax({
                     type: "POST"
-                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[1]->getChannel()->getId(); ?>&blockid=1"
+                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[1]->getChannel()->getId(); ?>&blockid=<?php echo $view->block; ?>"
                 , beforeSend: function(){
 
                 } 
@@ -114,7 +114,7 @@
             setInterval( function() { 
                 $.ajax({
                     type: "POST"
-                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[2]->getChannel()->getId(); ?>&blockid=1"
+                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[2]->getChannel()->getId(); ?>&blockid=<?php echo $view->block; ?>"
                 , beforeSend: function(){
 
                 } 
@@ -140,7 +140,7 @@
             setInterval( function() { 
                 $.ajax({
                     type: "POST"
-                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[3]->getChannel()->getId(); ?>&blockid=1"
+                , url: "Ajax_folder/poll_percentages.php?channelid=<?php echo $view->options[3]->getChannel()->getId(); ?>&blockid=<?php echo $view->block; ?>"
                 , beforeSend: function(){
 
                 } 

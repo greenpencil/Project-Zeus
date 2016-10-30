@@ -1,5 +1,5 @@
 <?php
-
+require_once ("DB.php");
 /**
  * Created by PhpStorm.
  * User: Katie
@@ -26,5 +26,22 @@ class DatabaseCalls
         return new Channel($return->id, $return->title,$return->number,$return->code);
     }
 
-    
+
+    public function getCurrentBlockId()
+    {
+        $this->_db->query("SELECT * FROM settings WHERE name='current_block_id'");
+        $return = $this->_db->getFirst();
+        return $return->value;
+    }
+
+    public function updateBlockId($newId)
+    {
+        $updateq = "UPDATE settings SET value='".$newId."' WHERE name='current_block_id'";
+        $this->_db->query($updateq);
+    }
+
+    public function checkIfHourPast($oldtime, $currenttime)
+    {
+        
+    }
 }
