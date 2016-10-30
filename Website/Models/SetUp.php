@@ -43,7 +43,7 @@ class SetUp
     }
 
     public function generateChannels(){
-        $nums = $this->UniqueRandomNumbersWithinRange(1,10, 4);
+        $nums = $this->UniqueRandomNumbersWithinRange(2,10, 4);
         foreach ($nums as $num)
         {
             $this->apiCall->addProgramToDB($num);
