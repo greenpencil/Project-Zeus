@@ -26,32 +26,27 @@ class APICall
        echo 'program desc: ' . $option->getDesc() . '<br/>';
        echo 'channel number: ' . $option->getChannelNumber() . '<br/>';
     }
-
-    public function getOptions(){
-    $rand = $this->UniqueRandomNumbersWithinRange(0, 9, 4);
-
-        foreach ($rand as $option) {
-            $this->getChannelInfo($this->opt[$option]);
-        }
-    }
-
+    
     public function addToDB($option){
-        $this->_db->insertSQL("INSERT INTO options (channelTitle, showTitle, shortDesc, channelNumber) VALUES ('" . $option->getChannelTitle() . "','" . $option->getShowTitle() . "','" .$option->getDesc() . "','" .$option->getChannelNumber()."')");
+        $newShowTitle = $this->_db->getPDO()->quote($option->getShowTitle());
+        $newShortDest =  $this->_db->getPDO()->quote($option->getDesc());
+        echo "INSERT INTO programs (name, short_desc, channel_id) VALUES (" . $newShowTitle . "," .$newShortDest. ",'" .$option->getChannel()."')";
+        //$this->_db->insertSQL("INSERT INTO programs (name, short_desc, channel_id) VALUES ('" . $option->getShowTitle() . "','" .$option->getDesc() . "','" .$option->getChannel()."')");
     }
 
-    public function getChannelInfo($channelCode){
+    public function addProgramToDB($channelCode){
         ini_set("allow_url_fopen", 1);
         $json = file_get_contents("http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json?channels=".$channelCode."&time=". $this->_d->format('Ymd')."0000&dur=10&detail=2&siteId=1");
         $obj = json_decode($json);
-        $option = new Options($obj->channels->program[0]->title, $obj->channels->title, $obj->channels->program[0]->shortDesc, $channelCode );
+        //echo '<pre>';
+        //var_dump($obj->channels);
+        //echo '</pre>';
+        $this->_db->query("SELECT id FROM channels WHERE code=".$channelCode);
+        $res = $this->_db->getFirst()->id;
+        $option = new Program($obj->channels->program->title, null, $obj->channels->program->shortDesc, $res );
         $this->addToDB($option);
     }
 
-    public function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
-        $numbers = range($min, $max);
-        shuffle($numbers);
-        return array_slice($numbers, 0, $quantity);
-    }
 
     public function initialiseArray(){
         

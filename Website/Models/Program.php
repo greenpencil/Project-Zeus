@@ -6,14 +6,12 @@
  * Date: 29/10/2016
  * Time: 18:52
  */
-class Options
+class Program
 {
     private $_showTitle;
-    private $_channelTitle;
-    private $_channelNumber;
     private $_image;
     private $desc;
-    private $channelCode;
+    private $channel;
 
     /**
      * Option constructor.
@@ -24,14 +22,12 @@ class Options
      * @param $desc
      * @param $channelCode
      */
-    public function __construct($_showTitle, $_channelTitle, $desc, $channelCode)
+    public function __construct($_showTitle, $_image, $desc, $channel)
     {
         $this->_showTitle = $_showTitle;
-        $this->_channelTitle = $_channelTitle;
-        //$this->_channelNumber = $_channelNumber;
-        //$this->_image = $_image;
+        $this->_image = $_image;
         $this->desc = $desc;
-        $this->channelCode = $channelCode;
+        $this->channel = $channel;
     }
 
     /**
@@ -48,38 +44,6 @@ class Options
     public function setShowTitle($showTitle)
     {
         $this->_showTitle = $showTitle;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getChannelTitle()
-    {
-        return $this->_channelTitle;
-    }
-
-    /**
-     * @param mixed $channelTitle
-     */
-    public function setChannelTitle($channelTitle)
-    {
-        $this->_channelTitle = $channelTitle;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getChannelNumber()
-    {
-        return $this->_channelNumber;
-    }
-
-    /**
-     * @param mixed $channelNumber
-     */
-    public function setChannelNumber($channelNumber)
-    {
-        $this->_channelNumber = $channelNumber;
     }
 
     /**
@@ -117,16 +81,16 @@ class Options
     /**
      * @return mixed
      */
-    public function getChannelCode()
+    public function getChannel()
     {
-        return $this->channelCode;
+        return $this->channel;
     }
 
     /**
-     * @param mixed $channelCode
+     * @param mixed $channel
      */
-    public function setChannelCode($channelCode)
+    public function setChannel($channel)
     {
-        $this->channelCode = $channelCode;
+        $this->channel = $channel;
     }
 }
