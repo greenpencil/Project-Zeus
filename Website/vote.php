@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Models/Functions.php';
+require_once 'Models/SetUp.php';
     if(isset($_POST['vote']))
     {
        // deal with adding to db
@@ -12,7 +13,12 @@ require_once 'Models/Functions.php';
 
     $apiCall= new APICall();
 
-    $apiCall->addProgramToDB(2002);
+    //$apiCall->addProgramToDB(2002);
 
+$dbCalls = new DatabaseCalls();
+$dbCalls->getChannelById(1);
+
+//$voting = new SetUp();
+//$voting->generateChannels();
 //addToDB($option)
 ?>

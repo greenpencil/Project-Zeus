@@ -4,7 +4,12 @@ require_once 'Models/Functions.php';
 if(!isset($user)) {
     $user = new User();
 }
+$setup = new SetUp();
+
 $view = new stdClass();
 $view->pageTitle = 'Homepage';
-$view->options = 
+$setup->generateChannels();
+$view->options = $setup->getListOfPrograms();
+
+var_dump($view->options);
 require_once('Views/index.phtml');

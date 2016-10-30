@@ -51,10 +51,9 @@
             <?php foreach ($view->options as $option) {
                 ?>
                 <div class="col-md-3 col-sm-12 padding10">
-                    <a href="/" class="btn btn-primary"><img src="<?php echo getPoster($option->getProgramTitle()); ?>" style="width: 150px" ></a>
+                    <a href="/" class="btn btn-primary"><img src="<?php //echo getPoster($option->getProgramTitle()); ?>" style="width: 150px" ></a>
                     <br/>
-                    <?php echo $option->getProgramTitle() ?></br>
-                    <?php echo $option->getChannelTitle() ?>
+                    <?php echo $option->getShowTitle() ?></br>
                 </div>
                 <?php
             } ?>
