@@ -15,7 +15,7 @@ class Voting
     }
 
     public function addVote($blockid, $channelid, $userid){
-        $this->db->insertSQL("INSERT INTO votes (block_id, channel_id, user_id) VALUES ("." $blockid "." $channelid "." $userid )");
+        $this->db->insertSQL("INSERT INTO votes (block_id, channel_id, user_id) VALUES ('" . $blockid . "','" . $channelid . "','" . $userid . "')");
     }
 
     public function getUserVotes($fUserid){

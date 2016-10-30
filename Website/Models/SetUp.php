@@ -41,7 +41,7 @@ class SetUp
     public function getListOfPrograms(){
         foreach ($this->programs as $program)
         {
-            
+            //$program.setChannel(getChannelById($channel))
         }
 
         return $this->programs;

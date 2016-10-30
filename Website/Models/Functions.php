@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-date_default_timezone_set('Europe/London');
+date_default_timezone_set('Europe/Paris');
 
 //Loads up all the Classes
 spl_autoload_register(function($class) {

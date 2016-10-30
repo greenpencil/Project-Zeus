@@ -10,6 +10,4 @@ $view = new stdClass();
 $view->pageTitle = 'Homepage';
 $setup->generateChannels();
 $view->options = $setup->getListOfPrograms();
-
-var_dump($view->options);
 require_once('Views/index.phtml');
